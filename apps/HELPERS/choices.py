@@ -1,7 +1,7 @@
 STATUS = {
     "options":[
-        "Registeration Opened",
-        "Registeration Closed",
+        "Opened",
+        "Closed",
         "Coming Soon",
     ]
 }
