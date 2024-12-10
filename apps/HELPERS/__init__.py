@@ -1,1 +1,1 @@
-from .choices import STATUS
+from .choices import STATUS,PAYMENT_STATUS

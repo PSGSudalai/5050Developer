@@ -13,7 +13,14 @@ class UserSerializer(serializers.ModelSerializer):
         fields = [
             "id",
             "uuid",
+            "student_id",
+            "name",
+            "phone",
+            "address",
+            "college_name",
+            "dob",
             "email",
+            "created",
             "password",
             "token",
         ]
@@ -33,6 +40,11 @@ class UserSerializer(serializers.ModelSerializer):
 
         user = User(
             email=validated_data.get("email"),
+            name=validated_data.get("name"),
+            phone=validated_data.get("phone"),
+            address=validated_data.get("address"),
+            college_name=validated_data.get("college_name"),
+            dob=validated_data.get("dob"),
         )
         user.set_password(validated_data["password"])
         user.save()
