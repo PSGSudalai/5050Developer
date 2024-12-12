@@ -3,15 +3,17 @@ from django.conf import settings
 
 
 def get_razorpay_client():
-    # return razorpay.Client(auth=("rzp_test_sYDXizFjDxb4Vw", "mWbFEV0lUB2Mzp71x57wZSw2"))
 
-    RZP_KEY_ID = settings.RAZORPAY_KEY_ID
-    RZP_SECRET_KEY = settings.RAZORPAY_SECRET_KEY
+    # RZP_KEY_ID = settings.RAZORPAY_KEY_ID
+    # RZP_SECRET_KEY = settings.RAZORPAY_SECRET_KEY
+
+    RZP_KEY_ID = "rzp_test_sYDXizFjDxb4Vw"
+    RZP_SECRET_KEY = "mWbFEV0lUB2Mzp71x57wZSw2"
     print(RZP_KEY_ID)
     print(RZP_SECRET_KEY)
 
     rzp_client = razorpay.Client(auth=(RZP_KEY_ID, RZP_SECRET_KEY))
-    print(rzp_client)
+
     return rzp_client
 
 

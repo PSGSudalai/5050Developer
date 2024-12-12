@@ -13,8 +13,7 @@ class CreateOrderView(AppAPIView):
 
     def post(self,request):
         uuid = request.data.get("uuid")
-        event = request.data.get("event")
-        if not event:
+        if not uuid:
             return self.send_error_response({"error":"Invalid event"})
         
         try:
@@ -31,7 +30,7 @@ class CreateOrderView(AppAPIView):
             payment = Payment.objects.create(
                 order_id = order_response["id"],
                 amount = amount /100,
-                status = "Paid",
+                status = "Payment Initiated",
                 event =item
             )
             serializer =PaymentSerializer(payment)
@@ -49,17 +48,13 @@ class VerifyPaymentView(AppAPIView):
         razorpay_payment_id = request.data.get("payment_id")
         razorpay_signature = request.data.get("signature")
         uuid = request.data.get("uuid")
-        event = request.data.get("event")
         user = self.get_authenticated_user()
 
         if not all([razorpay_order_id,razorpay_payment_id,razorpay_signature]):
             return self.send_error_response({"error":"Missing Razorpay details"})
         
         if not uuid:
-            return self.send_error_response({"error":"UUId is required"})
-        
-        if not event:
-            return self.send_error_response({"error":"Invalid Event"})
+            return self.send_error_response({"error":"Event UUId is required"})
         
         try:
             verify_razorpay_payment_completion(

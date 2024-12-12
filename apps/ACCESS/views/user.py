@@ -10,7 +10,9 @@ from apps.BASE.config import API_RESPONSE_ACTION_CODES
 from django.contrib.auth import logout as django_logout
 from rest_framework.generics import ListAPIView
 
-class RegisterView(AppCreateAPIView, NonAuthenticatedAPIMixin,ListAPIViewSet,CUDAPIViewSet):
+class RegisterView(AppCreateAPIView, NonAuthenticatedAPIMixin,CUDAPIViewSet):
+    permission_classes = [AllowAny]
+    authentication_classes = []
     queryset = User.objects.all()
     serializer_class = UserSerializer
 

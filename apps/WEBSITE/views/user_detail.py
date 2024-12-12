@@ -32,13 +32,15 @@ class UserDetailAPIView(AppAPIView):
             user.address = address
             user.save()
 
-            # Prepare the response data
-            data = {
-                "name": user.name,
-                "dob": user.dob,
-                "phone": user.phone,
-                "college": user.college_name,
-                "address": user.address,
+
+
+            data ={
+                "name":user.name,
+                "dob":user.dob,
+                "email":user.email,
+                "phone":user.phone,
+                "college":user.college,
+                "address": user.address if hasattr(user, "address") else None
             }
             return self.send_response(data)
         except Exception as e:
