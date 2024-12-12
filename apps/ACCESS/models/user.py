@@ -1,11 +1,13 @@
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from django.db import models
 from apps.BASE.managers import UserManager
+from apps.BASE.model_fields import AppSingleChoiceField
 from apps.BASE.models import (
     BaseModel,
     MAX_CHAR_FIELD_LENGTH,
     DEFAULT_BLANK_NULLABLE_FIELD_CONFIG,
 )
+from apps.HELPERS.choices import ATTENDANCE
 
 
 # Custom User Model
@@ -25,6 +27,7 @@ class User(BaseModel, AbstractBaseUser, PermissionsMixin):
     dob = models.DateField(**DEFAULT_BLANK_NULLABLE_FIELD_CONFIG)
     point = models.CharField(max_length=MAX_CHAR_FIELD_LENGTH,**DEFAULT_BLANK_NULLABLE_FIELD_CONFIG)
     certificate = models.CharField(max_length=MAX_CHAR_FIELD_LENGTH,**DEFAULT_BLANK_NULLABLE_FIELD_CONFIG)
+    status = AppSingleChoiceField(choices_config=ATTENDANCE,default="Present")
 
     is_staff = models.BooleanField(default=False)
     is_admin = models.BooleanField(default=False)

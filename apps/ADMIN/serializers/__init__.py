@@ -2,3 +2,4 @@ from .event import EventWriteSerializer,EventReadSerializer
 from .registerevent import RegisterEventReadSerializer
 from .complete_event import CompletedReadSerializer
 from .leaderboard import LeaderBoardReadSerializer
+from .subscription import SubscriptionReadSerializer

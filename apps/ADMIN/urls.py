@@ -10,6 +10,9 @@ from apps.ADMIN.views import (
     CompleteEventListAPIView,
     LeaderBoardListAPIView,
     AdminDashboard,
+    SubscriptionListAPIView,
+    SubscriptionAPIView,
+    SubscriptionTableMeta,
 )
 from apps.BASE.views import get_upload_api_view
 
@@ -36,6 +39,9 @@ router.register("leader/list",LeaderBoardListAPIView,basename="leaderlist")
 urlpatterns = [
     path('event/image/',get_upload_api_view(meta_model=EventImage).as_view()),
     path('event/video/',get_upload_api_view(meta_model=DemoVideo).as_view()),
-    path("dashboard/",AdminDashboard.as_view())
+    path("dashboard/",AdminDashboard.as_view()),
+    path("subscription/attendence/",SubscriptionAPIView.as_view()),
+    path("subscription/table-meta/",SubscriptionTableMeta.as_view()),
+    path("subscription/list/<uuid>/",SubscriptionListAPIView.as_view({'get':'list'}))
 
 ] + router.urls

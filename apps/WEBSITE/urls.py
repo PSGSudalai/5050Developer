@@ -10,6 +10,9 @@ from .views import(
         CreateOrderView,
         VerifyPaymentView,
         UserDetailAPIView,
+        SubscriptionListAPIView,
+        SubscriptionTableMeta,
+        UserDetailListAPIView,
 
 ) 
 
@@ -25,9 +28,14 @@ router.register("certificate/list",CertificateListAPIView)
 
 
 
+
+
 urlpatterns = [
     path("event/video/<uuid>/",EventVideoAPIView.as_view()),
     path("create-payment/", CreateOrderView.as_view(), name="create-order"),
     path("verify-payment/", VerifyPaymentView.as_view(), name="verify-payment"),
     path("user/detail/", UserDetailAPIView.as_view(), name="user-detail"),
+    path("user/list/", UserDetailListAPIView.as_view({'get':'list'})),
+    path("booking/table-meta/", SubscriptionTableMeta.as_view()),
+    path("booking/event/",SubscriptionListAPIView.as_view({'get':'list'}),name="booking-event")
 ] + router.urls

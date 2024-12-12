@@ -92,7 +92,7 @@ class VerifyPaymentView(AppAPIView):
             return self.send_error_response({"error":"Payment not found"})
         except Exception as e:
             payment = Payment.objects.get(order_id = razorpay_order_id)
-            payment.status ="Unpaid"
+            payment.status ="Pending"
             payment.save()
 
             if "sub" in locals():

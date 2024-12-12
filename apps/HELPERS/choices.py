@@ -9,6 +9,14 @@ STATUS = {
 PAYMENT_STATUS = {
     "options":[
         "Paid",
-        "Unpaid",
+        "Pending",
+    ]
+}
+
+
+ATTENDANCE ={
+    "options":[
+        "Present",
+        "Absent"
     ]
 }
