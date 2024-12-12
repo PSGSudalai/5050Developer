@@ -102,15 +102,24 @@ WSGI_APPLICATION = "config.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.sqlite3",
+#         "NAME": BASE_DIR / "db.sqlite3",
+#     }
+# }
+
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',  # Use MySQL backend
+        'NAME': 'db_staging_erp',              # Database name
+        'USER': 'TestERP',                     # Your database username
+        'PASSWORD': 'TestERP@2024',            # Your database password
+        'HOST': '92.205.4.188',                # Host (use 'localhost' if hosted locally on cPanel)
+        'PORT': '3306',                        # Default MySQL port
     }
 }
 
-# Password validation
-# https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
